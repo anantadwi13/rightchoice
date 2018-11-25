@@ -121,7 +121,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Kartu.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="NilaiPilar.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Kartu.h" />
+    <ClInclude Include="NilaiPilar.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
