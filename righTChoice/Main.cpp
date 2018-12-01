@@ -1,76 +1,150 @@
-#include "wx/wxprec.h"
-#ifndef WX_PRECOMP
-#include "wx/wx.h"
-#endif
+#include<iostream>
+#include"Kartu.h"
+#include"KartuDB.h"
+#include<math.h>
+#include<ctime>
 
-class MyApp : public wxApp
-{
-public:
-	virtual bool OnInit();
-};
+WX_DECLARE_OBJARRAY(int, IntegerArray);
 
-class MyFrame : public wxFrame
-{
-public:
-	MyFrame(const wxString& title);
-	void OnQuit(wxCommandEvent& event);
-	void OnAbout(wxCommandEvent& event);
-private:
-	wxDECLARE_EVENT_TABLE();
-};
+#include <wx/arrimpl.cpp>
+WX_DEFINE_OBJARRAY(IntegerArray);
+using namespace std;
 
-wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
-EVT_MENU(wxID_EXIT, MyFrame::OnQuit)
-EVT_MENU(wxID_ABOUT, MyFrame::OnAbout)
-wxEND_EVENT_TABLE()
-IMPLEMENT_APP(MyApp)
+const int MIN = 0;
+const int MAX = 10;
 
-bool MyApp::OnInit()
-{
-	if (!wxApp::OnInit())
-		return false;
-	MyFrame *frame = new MyFrame("Minimal wxWidgets App");
-	frame->Show(true);
-	return true;
+bool inRange(int pilar) {
+	if (pilar > MIN && pilar < MAX)
+		return true;
+	return false;
 }
 
-MyFrame::MyFrame(const wxString& title)
-	: wxFrame(NULL, wxID_ANY, title)
-{
-	#if wxUSE_MENUS
-		wxMenu *fileMenu = new wxMenu;
-		wxMenu *helpMenu = new wxMenu;
-		helpMenu->Append(wxID_ABOUT, "&About\tF1", "Show about dialog");
-		fileMenu->Append(wxID_EXIT, "E&xit\tAlt-X", "Quit this program");
-		wxMenuBar *menuBar = new wxMenuBar();
-		menuBar->Append(fileMenu, "&File");
-		menuBar->Append(helpMenu, "&Help");
-		SetMenuBar(menuBar);
-	#endif
-	#if wxUSE_STATUSBAR
-		CreateStatusBar(2);
-		SetStatusText("Welcome to wxWidgets!");
-	#endif
+int random(int size) {
+	return rand()%size;
 }
 
-void MyFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
-{
-	Close(true);
+void printPilar(int intelektual, int kesehatan, int hubungan, int finansial) {
+	if (intelektual < MIN)
+		intelektual = MIN;
+	if (kesehatan < MIN)
+		kesehatan = MIN;
+	if (hubungan < MIN)
+		hubungan = MIN;
+	if (finansial < MIN)
+		finansial = MIN;
+	if (intelektual > MAX)
+		intelektual = MAX;
+	if (kesehatan > MAX)
+		kesehatan = MAX;
+	if (hubungan > MAX)
+		hubungan = MAX;
+	if (finansial > MAX)
+		finansial = MAX;
+
+	cout << intelektual << " " << kesehatan << " " << hubungan << " " << finansial << " " << endl;
 }
 
-void MyFrame::OnAbout(wxCommandEvent& WXUNUSED(event))
-{
-	wxMessageBox(wxString::Format
-	(
-		"Welcome to %s!\n"
-		"\n"
-		"This is the minimal wxWidgets sample\n"
-		"running under %s.",
-		wxVERSION_STRING,
-		wxGetOsDescription()
-	),
-		"About wxWidgets minimal sample",
-		wxOK | wxICON_INFORMATION,
-		this);
 
+int main() {
+	/*sqlite3 *db;
+	char *msg;
+	sqlite3_open("test.db", &db);
+	for (int i = 2; i <= 20; i++) {
+		string sql = "INSERT INTO Kartu (problem,rightAnswer,leftAnswer,rightDay,leftDay,type,Lintelektual,Lkesehatan,Lhubungan,Lfinansial,Rintelektual,Rkesehatan,Rhubungan,Rfinansial) "  \
+			"VALUES ('Ini Masalah Ke-"+to_string(i)+"', 'rightAnswer" + to_string(i) + "', 'leftAnswer" + to_string(i) + "', 1, 2, 1, 1,2,3,4,-1,-2,-3,-4 );";
+		const char *query = sql.c_str();
+
+		sqlite3_exec(db, query, NULL, NULL, &msg);
+	}
+	sqlite3_close(db);
+	system("pause");
+	return 0;*/
+
+	KartuDB *kartuDB = new KartuDB();
+	Kartu card = kartuDB->getCardById(1);
+	KartuArray cards = kartuDB->getAllCards();
+	IntegerArray a;
+	IntegerArray b;
+	int flag = 0;
+	for (int i = 1; i <= cards.Count(); i++) {
+		a.Add(i);
+	}
+
+	srand(time(NULL));
+	int intelektual = 5;
+	int kesehatan = 5;
+	int hubungan = 5;
+	int finansial = 5;
+	int nilai[22];
+	memset(nilai, 0, sizeof(nilai));
+	while (inRange(intelektual) && inRange(kesehatan) && inRange(hubungan) && inRange(finansial))
+	{
+		int rand,angka,choose;
+		if (flag==0) {
+			rand = random(a.Count());
+			angka = a[rand];
+			a.RemoveAt(rand, 1);
+			b.Add(angka);
+			nilai[angka]++;
+			if (a.Count() <= 0)
+				flag = 1;
+		}
+		else {
+			rand = random(b.Count());
+			angka = b[rand];
+			b.RemoveAt(rand, 1);
+			a.Add(angka);
+			nilai[angka]++;
+			if (b.Count() <= 0)
+				flag = 0;
+		}
+		card = kartuDB->getCardById(angka);
+
+		cout << endl << card.getProblem() << endl;
+
+		cin >> choose;
+
+		if (choose == 1) {
+			intelektual += card.getRightValue()->getIntelektual();
+			kesehatan += card.getRightValue()->getKesehatan();
+			hubungan += card.getRightValue()->getHubungan();
+			finansial += card.getRightValue()->getFinansial();
+		}
+		else
+		{
+			intelektual += card.getLeftValue()->getIntelektual();
+			kesehatan += card.getLeftValue()->getKesehatan();
+			hubungan += card.getLeftValue()->getHubungan();
+			finansial += card.getLeftValue()->getFinansial();
+		}
+		printPilar(intelektual, kesehatan, hubungan, finansial);
+
+		/*for (int i = 1; i <= cards.Count(); i++)
+			cout << nilai[i] << " ";*/
+
+	}
+
+	if (intelektual <= MIN)
+		cout << "Dibodohi";
+	else if (kesehatan <= MIN)
+		cout << "Nggak sehat";
+	else if (hubungan <= MIN)
+		cout << "Apatis";
+	else if (finansial <= MIN)
+		cout << "Melarat";
+	else if (intelektual >= MAX)
+		cout << "Gila";
+	else if (kesehatan >= MAX)
+		cout << "Terlalu sehat";
+	else if (hubungan >= MAX)
+		cout << "Terlalu sibuk";
+	else if (finansial >= MAX)
+		cout << "Jadi pengusaha";
+
+	cout << endl;
+
+	delete kartuDB;
+
+	system("pause");
+	return 0;
 }

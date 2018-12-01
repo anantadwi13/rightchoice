@@ -1,13 +1,10 @@
 #include "Kartu.h"
 
-
-
 Kartu::Kartu()
 {
 }
+
 Kartu::~Kartu() {
-	if (this->nilai!=NULL)
-		delete this->nilai;
 }
 
 
@@ -35,15 +32,25 @@ void Kartu::setLeftAnswer(string leftAnswer) {
 string Kartu::getLeftAnswer() {
 	return this->leftAnswer;
 }
-void Kartu::setNilai(int intelektual, int kesehatan, int hubungan, int finansial) {
-	this->nilai = new NilaiPilar();
-	this->nilai->setIntelektual(intelektual);
-	this->nilai->setKesehatan(kesehatan);
-	this->nilai->setHubungan(hubungan);
-	this->nilai->setFinansial(finansial);
+void Kartu::setRightValue(int intelektual, int kesehatan, int hubungan, int finansial) {
+	this->rightValue = new NilaiPilar();
+	this->rightValue->setIntelektual(intelektual);
+	this->rightValue->setKesehatan(kesehatan);
+	this->rightValue->setHubungan(hubungan);
+	this->rightValue->setFinansial(finansial);
 }
-NilaiPilar *Kartu::getNilai() {
-	return this->nilai;
+NilaiPilar *Kartu::getRightValue() {
+	return this->rightValue;
+}
+void Kartu::setLeftValue(int intelektual, int kesehatan, int hubungan, int finansial) {
+	this->leftValue = new NilaiPilar();
+	this->leftValue->setIntelektual(intelektual);
+	this->leftValue->setKesehatan(kesehatan);
+	this->leftValue->setHubungan(hubungan);
+	this->leftValue->setFinansial(finansial);
+}
+NilaiPilar *Kartu::getLeftValue() {
+	return this->leftValue;
 }
 void Kartu::setRightDay(int rightDay) {
 	this->rightDay = rightDay;
@@ -51,7 +58,7 @@ void Kartu::setRightDay(int rightDay) {
 int Kartu::getRightDay() {
 	return this->rightDay;
 }
-void Kartu::setLetDay(int leftDay) {
+void Kartu::setLeftDay(int leftDay) {
 	this->leftDay = leftDay;
 }
 int Kartu::getLeftDay() {

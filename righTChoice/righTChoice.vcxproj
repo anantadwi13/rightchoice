@@ -122,12 +122,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Kartu.cpp" />
+    <ClCompile Include="KartuDB.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Main2.cpp" />
     <ClCompile Include="NilaiPilar.cpp" />
+    <ClCompile Include="sqlite3.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Kartu.h" />
+    <ClInclude Include="KartuDB.h" />
     <ClInclude Include="NilaiPilar.h" />
+    <ClInclude Include="sqlite3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

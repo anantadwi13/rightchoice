@@ -11,7 +11,8 @@ private:
 	string problem;
 	string rightAnswer;
 	string leftAnswer;
-	NilaiPilar *nilai = NULL;
+	NilaiPilar *rightValue = NULL;
+	NilaiPilar *leftValue = NULL;
 	int rightDay;
 	int leftDay;
 	int type;
@@ -26,11 +27,13 @@ public:
 	string getRightAnswer();
 	void setLeftAnswer(string leftAnswer);
 	string getLeftAnswer();
-	void setNilai(int intelektual, int kesehatan, int hubungan, int finansial);
-	NilaiPilar *getNilai();
+	void setRightValue(int intelektual, int kesehatan, int hubungan, int finansial);
+	NilaiPilar *getRightValue();
+	void setLeftValue(int intelektual, int kesehatan, int hubungan, int finansial);
+	NilaiPilar *getLeftValue();
 	void setRightDay(int rightDay);
 	int getRightDay();
-	void setLetDay(int leftDay);
+	void setLeftDay(int leftDay);
 	int getLeftDay();
 	void setType(int type);
 	int getType();
