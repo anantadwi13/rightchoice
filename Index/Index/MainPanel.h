@@ -8,6 +8,8 @@ public:
 	~MainPanel();
 	void OnGameClick(wxCommandEvent& event);
 	void OnInstructionClick(wxCommandEvent& event);
+	void OnHighscoresClick(wxCommandEvent& event);
+	void OnExitClick(wxCommandEvent& event);
 	//mirip imagewindow
 	void OnPaint(wxPaintEvent &event);
 private:

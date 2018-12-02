@@ -3,7 +3,7 @@
 #include "InstructionPanel.h"
 #include "GamePanel.h"
 
-int SwitchFrame::width = 810;
+int SwitchFrame::width = 801;
 int SwitchFrame::height = 480;
 
 SwitchFrame::SwitchFrame(const wxString & title)
