@@ -27,6 +27,12 @@
     <ClInclude Include="SwitchFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ImageLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ButtonImageLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainMenu.cpp">
@@ -42,6 +48,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SwitchFrame.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonImageLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

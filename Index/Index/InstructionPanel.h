@@ -1,6 +1,8 @@
 #pragma once
 #include "wx\wx.h"
 #include "SwitchFrame.h"
+#include "MainPanel.h"
+
 class InstructionPanel : public wxPanel
 {
 public:
@@ -11,8 +13,8 @@ public:
 	void OnPaint(wxPaintEvent &event);
 private:
 	//mirip imagewindow
-	wxBitmap *bgBitm = nullptr;
-	void loadBgBitm();
+	ImageLoaderList *img = nullptr, *btn = nullptr;
 	SwitchFrame *parentFrame;
 	DECLARE_EVENT_TABLE()
+	void renderBitmap();
 };

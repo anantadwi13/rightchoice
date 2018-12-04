@@ -12,6 +12,8 @@ IMPLEMENT_APP(MyApp)
 DECLARE_APP(MyApp)
 bool MyApp::OnInit() {
 	SwitchFrame *frame = new SwitchFrame("righTChoice");
+	wxIcon *i = new wxIcon(wxT("img//favicon.png"), wxBITMAP_TYPE_PNG);
+	frame->SetIcon(*i);
 	frame->Show(true);
 	return true;
 }

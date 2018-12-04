@@ -1,6 +1,8 @@
 #pragma once
 #include "wx\wx.h"
 #include "SwitchFrame.h"
+#include "MainPanel.h"
+
 class GamePanel : public wxPanel
 {
 public:
@@ -10,8 +12,8 @@ public:
 	void OnBackButtonClick(wxCommandEvent& event);
 private:
 	//mirip imagewindow
-	wxBitmap *bgBit = nullptr;
-	void loadBgBit();
+	ImageLoaderList *img = nullptr, *btn = nullptr;
 	SwitchFrame *parentFrame;
 	DECLARE_EVENT_TABLE()
+	void renderBitmap();
 };

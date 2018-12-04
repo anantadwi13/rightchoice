@@ -19,13 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ButtonImageLoader.h" />
     <ClInclude Include="GamePanel.h" />
+    <ClInclude Include="ImageLoader.h" />
     <ClInclude Include="InstructionPanel.h" />
     <ClInclude Include="MainPanel.h" />
     <ClInclude Include="SwitchFrame.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ButtonImageLoader.cpp" />
     <ClCompile Include="GamePanel.cpp" />
+    <ClCompile Include="ImageLoader.cpp" />
     <ClCompile Include="InstructionPanel.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MainPanel.cpp" />

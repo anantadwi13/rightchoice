@@ -1,5 +1,6 @@
 //tampilan muka game utama
 #include "GamePanel.h"
+
 BEGIN_EVENT_TABLE(GamePanel, wxPanel)
 	EVT_BUTTON(1001, GamePanel::OnBackButtonClick)
 	EVT_PAINT(GamePanel::OnPaint)
@@ -8,30 +9,38 @@ GamePanel::GamePanel(SwitchFrame * parent) :
 	wxPanel(parent, wxID_ANY), parentFrame(parent)
 {
 	this->SetBackgroundColour(wxColour(*wxWHITE));
-	wxButton* backButton = new wxButton(this, 1001, wxT("Back"),
-		wxPoint(/*SwitchFrame::width - backButton->GetMinWidth()*/ 0, 0),
-		wxDefaultSize);
 	//load JPEGHandler untuk membaca file JPEG.
 	wxImageHandler *jpegLoader = new wxJPEGHandler();
 	wxImage::AddHandler(jpegLoader);
-	//load image
-	this->loadBgBit();
+
+	//load PNGHandler untuk membaca file PNG.
+	wxImageHandler *pngLoader = new wxPNGHandler();
+	wxImage::AddHandler(pngLoader);
+
+	//instansiasi obj list img dan button img
+	this->img = new ImageLoaderList();
+	this->btn = new ImageLoaderList();
+
+	//load image dan button image
+	this->renderBitmap();
 }
 GamePanel::~GamePanel()
 {
-	delete bgBit;
+	this->btn->Clear();
+	this->img->Clear();
+	delete this->btn;
+	delete this->img;
 }
-void GamePanel::loadBgBit()
+void GamePanel::renderBitmap()
 {
-	//jika menggunakan relative path
-	//letakkan file potato.jpg pada folder Debug pertama
-	//wxStandardPaths &stdPaths = wxStandardPaths::Get();
-	//wxString fileLocation = stdPaths.GetExecutablePath();
-	/*fileLocation = wxFileName(fileLocation).GetPath() + wxT("\\bg.jpg");*/
-	wxString fileLocation = wxT("img//bg3.jpg");
-	wxMessageOutputDebug().Printf("Relative path of image is at %s", fileLocation);
-	wxImage image(fileLocation, wxBITMAP_TYPE_JPEG);
-	bgBit = new wxBitmap(image);
+	//img background
+	ImageLoader *img1 = new ImageLoader(wxT("img//bg3.jpg"));
+	this->img->Append(img1);
+	
+	//button img back
+	ButtonImageLoader *btn1 = new ButtonImageLoader(
+		wxT("img//btn_kembali.png"), this, 1001, 0, 0, 0);
+	this->btn->Append(btn1);
 }
 void GamePanel::OnBackButtonClick(wxCommandEvent & event)
 {
@@ -40,8 +49,15 @@ void GamePanel::OnBackButtonClick(wxCommandEvent & event)
 void GamePanel::OnPaint(wxPaintEvent &event)
 {
 	wxPaintDC pdc(this);
-	if (bgBit != nullptr)
+	ImageLoaderList::Node* tmp = this->img->GetFirst();
+
+	while (tmp)
 	{
-		pdc.DrawBitmap(*bgBit, wxPoint(0, 0), true);
+		ImageLoader *iml = tmp->GetData();
+		if (iml->loc == wxT("img//bg3.jpg"))
+		{
+			pdc.DrawBitmap(*iml->bitImage, wxPoint(0, 0), true);
+		}
+		tmp = tmp->GetNext();
 	}
 }
