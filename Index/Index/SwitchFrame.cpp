@@ -2,6 +2,10 @@
 #include "MainPanel.h"
 #include "InstructionPanel.h"
 #include "GamePanel.h"
+//
+//BEGIN_EVENT_TABLE(SwitchFrame, wxFrame)
+//	EVT_MEDIA_LOADED(1001, SwitchFrame::BacksoundPlay)
+//END_EVENT_TABLE()
 
 int SwitchFrame::width = 801;
 int SwitchFrame::height = 480;
@@ -33,9 +37,20 @@ void SwitchFrame::InitComponents()
 	this->instructionPanel->Show(false);
 	this->boxSizer->Add(instructionPanel, 1, wxEXPAND, 0);
 
+	//this->music = new wxMediaCtrl(this, 1001, wxT("bg.wav"));
+	//this->music->Load(wxT("bg.wav"));
+	//this->music->ShowPlayerControls(wxMEDIACTRLPLAYERCONTROLS_NONE);
+
 	SetSizer(boxSizer);
 	ShowMainPanel();
 }
+//void SwitchFrame::BacksoundPlay(wxMediaEvent& event)
+//{
+//	if (this->music!=nullptr)
+//	{
+//		this->music->Play();
+//	}
+//}
 void SwitchFrame::ShowMainPanel()
 {
 	this->mainPanel->Show(true);
