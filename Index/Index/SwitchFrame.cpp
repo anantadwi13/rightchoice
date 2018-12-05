@@ -7,7 +7,7 @@ int SwitchFrame::width = 801;
 int SwitchFrame::height = 480;
 
 SwitchFrame::SwitchFrame(const wxString & title)
-	: wxFrame(NULL, wxID_ANY, title)
+	: wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE ^ wxMAXIMIZE_BOX ^ wxRESIZE_BORDER)
 {
 	this->InitComponents();
 }
