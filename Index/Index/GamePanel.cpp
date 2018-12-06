@@ -36,7 +36,27 @@ void GamePanel::renderBitmap()
 	//img background
 	ImageLoader *img1 = new ImageLoader(wxT("img//bg3.jpg"));
 	this->img->Append(img1);
+
+	//img bar otak
+	img1 = new ImageLoader(wxT("img//bar_otak.png"));
+	this->img->Append(img1);
+
+	//img bar otot
+	img1 = new ImageLoader(wxT("img//bar_otot.png"));
+	this->img->Append(img1);
 	
+	//img bar orang
+	img1 = new ImageLoader(wxT("img//bar_orang.png"));
+	this->img->Append(img1);
+
+	//img bar uang
+	img1 = new ImageLoader(wxT("img//bar_uang.png"));
+	this->img->Append(img1);
+
+	//img card1
+	img1 = new ImageLoader(wxT("img//fig_dosen.png"));
+	this->img->Append(img1);
+
 	//button img back
 	ButtonImageLoader *btn1 = new ButtonImageLoader(
 		wxT("img//btn_kembali.png"), this, 1001, 0, 0, 0);
@@ -55,9 +75,69 @@ void GamePanel::OnPaint(wxPaintEvent &event)
 	{
 		ImageLoader *iml = tmp->GetData();
 		if (iml->loc == wxT("img//bg3.jpg"))
-		{
 			pdc.DrawBitmap(*iml->bitImage, wxPoint(0, 0), true);
+		else if (iml->loc == wxT("img//bar_otak.png"))
+		{
+			int posX = SwitchFrame::width / 5 - iml->bitImage->GetWidth() / 2;
+			int posY = SwitchFrame::height / 10 - iml->bitImage->GetHeight() / 2;
+			pdc.DrawBitmap(*iml->bitImage, wxPoint(posX, posY), true);
+			int xrect = SwitchFrame::width / 5 + 60;
+			int yrect = SwitchFrame::height / 10 - 20;
+			int width = 300;
+			//wxMessageOutputDebug().Printf("w %d", SwitchFrame::width / 2 - xrect - width);
+			pdc.SetPen(*wxGREEN_PEN);
+			pdc.SetBrush(*wxGREEN_BRUSH);
+			pdc.DrawRectangle(wxPoint(xrect, yrect), wxSize(width, 40));
+		}
+		else if (iml->loc == wxT("img//bar_otot.png"))
+		{
+			int posX = SwitchFrame::width * 4 / 5 - iml->bitImage->GetWidth() / 2;
+			int posY = SwitchFrame::height / 10 - iml->bitImage->GetHeight() / 2;
+			pdc.DrawBitmap(*iml->bitImage, wxPoint(posX, posY), true);
+			int xrect = SwitchFrame::width / 2 + 24;
+			int yrect = SwitchFrame::height / 10 - 20;
+			int width = 300;
+			pdc.SetPen(*wxGREEN_PEN);
+			pdc.SetBrush(*wxGREEN_BRUSH);
+			pdc.DrawRectangle(wxPoint(xrect, yrect), wxSize(width, 40));
+		}
+		else if (iml->loc == wxT("img//bar_orang.png"))
+		{
+			int posX = SwitchFrame::width / 5 - iml->bitImage->GetWidth() / 2;
+			int posY = SwitchFrame::height / 10 + 80 - iml->bitImage->GetHeight() / 2;
+			pdc.DrawBitmap(*iml->bitImage, wxPoint(posX, posY), true);
+			int xrect = SwitchFrame::width / 5 + 60;
+			int yrect = SwitchFrame::height / 10 + 60;
+			int width = 300;
+			//wxMessageOutputDebug().Printf("w %d", SwitchFrame::width / 2 - xrect - width);
+			pdc.SetPen(*wxGREEN_PEN);
+			pdc.SetBrush(*wxGREEN_BRUSH);
+			pdc.DrawRectangle(wxPoint(xrect, yrect), wxSize(width, 40));
+		}
+		else if (iml->loc == wxT("img//bar_uang.png"))
+		{
+			int posX = SwitchFrame::width * 4 / 5 - iml->bitImage->GetWidth() / 2;
+			int posY = SwitchFrame::height / 10 + 80 - iml->bitImage->GetHeight() / 2;
+			pdc.DrawBitmap(*iml->bitImage, wxPoint(posX, posY), true);
+			int xrect = SwitchFrame::width / 2 + 24;
+			int yrect = SwitchFrame::height / 10 + 60;
+			int width = 300;
+			pdc.SetPen(*wxGREEN_PEN);
+			pdc.SetBrush(*wxGREEN_BRUSH);
+			pdc.DrawRectangle(wxPoint(xrect, yrect), wxSize(width, 40));
+		}
+		else if (iml->loc == wxT("img//fig_dosen.png"))
+		{
+			int posX = SwitchFrame::width / 2 - iml->bitImage->GetWidth() / 2;
+			int posY = SwitchFrame::height * 3 / 5 - iml->bitImage->GetHeight() / 2;
+			pdc.DrawBitmap(*iml->bitImage, wxPoint(posX, posY), true);
 		}
 		tmp = tmp->GetNext();
 	}
+	//footer current score
+	pdc.SetPen(*wxBLUE_PEN);
+	pdc.SetBrush(*wxBLUE_BRUSH);
+	pdc.DrawRectangle(
+		wxPoint(0, SwitchFrame::height - 100),
+		wxSize(SwitchFrame::width, 70));
 }

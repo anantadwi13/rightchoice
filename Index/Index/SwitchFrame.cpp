@@ -2,13 +2,13 @@
 #include "MainPanel.h"
 #include "InstructionPanel.h"
 #include "GamePanel.h"
-//
+
 //BEGIN_EVENT_TABLE(SwitchFrame, wxFrame)
 //	EVT_MEDIA_LOADED(1001, SwitchFrame::BacksoundPlay)
 //END_EVENT_TABLE()
 
-int SwitchFrame::width = 801;
-int SwitchFrame::height = 480;
+int SwitchFrame::width = 1280;
+int SwitchFrame::height = 720;
 
 SwitchFrame::SwitchFrame(const wxString & title)
 	: wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE ^ wxMAXIMIZE_BOX ^ wxRESIZE_BORDER)
@@ -37,9 +37,9 @@ void SwitchFrame::InitComponents()
 	this->instructionPanel->Show(false);
 	this->boxSizer->Add(instructionPanel, 1, wxEXPAND, 0);
 
-	//this->music = new wxMediaCtrl(this, 1001, wxT("bg.wav"));
-	//this->music->Load(wxT("bg.wav"));
-	//this->music->ShowPlayerControls(wxMEDIACTRLPLAYERCONTROLS_NONE);
+	/*this->music = new wxMediaCtrl(this, 1001, wxT("bg.mp3"),wxDefaultPosition,wxDefaultSize,wxBORDER_NONE,wxMEDIABACKEND_WMP10);
+	this->music->Load(wxT("bg.mp3"));
+	this->music->ShowPlayerControls(wxMEDIACTRLPLAYERCONTROLS_NONE);*/
 
 	SetSizer(boxSizer);
 	ShowMainPanel();

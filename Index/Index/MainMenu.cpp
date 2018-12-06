@@ -1,6 +1,6 @@
 //init window game
 #include "wx/wxprec.h"
-#include <wx/sound.h>
+//#include <wx/sound.h>
 #include "SwitchFrame.h"
 #ifndef WX_PRECOMP
 #include "wx/wx.h"

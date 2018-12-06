@@ -1,6 +1,6 @@
 //tampilan muka menu utama
 #include "MainPanel.h"
-#define h 50
+#define h 65
 WX_DEFINE_LIST(ImageLoaderList);
 BEGIN_EVENT_TABLE(MainPanel, wxPanel)
 	EVT_BUTTON(1001, MainPanel::OnGameClick)
@@ -39,12 +39,12 @@ MainPanel::~MainPanel()
 void MainPanel::renderBitmap()
 {	/*wxMessageOutputDebug().Printf("Relative path of image is at %s", fileLocation);*/
 	//img background
-	ImageLoader *img1 = new ImageLoader(wxT("img//bg.jpg"));
+	ImageLoader *img1 = new ImageLoader(wxT("img//bg1.jpg"));
 	this->img->Append(img1);
 	
 	//img logo
-	ImageLoader *img2 = new ImageLoader(wxT("img//logo.png"));
-	this->img->Append(img2);
+	img1 = new ImageLoader(wxT("img//logo.png"));
+	this->img->Append(img1);
 
 	//button img mulai
 	ButtonImageLoader *btn1 = new ButtonImageLoader(
@@ -52,24 +52,24 @@ void MainPanel::renderBitmap()
 	this->btn->Append(btn1);
 
 	//button img instruksi
-	ButtonImageLoader *btn2 = new ButtonImageLoader(
+	btn1 = new ButtonImageLoader(
 		wxT("img//btn_instruksi.png"), this, 1002, 1 * h);
-	this->btn->Append(btn2);
+	this->btn->Append(btn1);
 
 	//button img highscores
-	ButtonImageLoader *btn3 = new ButtonImageLoader(
-		wxT("img//btn_skor.png"), this, 1003, 2*h);
-	this->btn->Append(btn3);
+	btn1 = new ButtonImageLoader(
+		wxT("img//btn_skor.png"), this, 1003, 2 * h);
+	this->btn->Append(btn1);
 
 	//button img about
-	ButtonImageLoader *btn4 = new ButtonImageLoader(
-		wxT("img//btn_tentang.png"), this, 1004, 2 * h);
-	this->btn->Append(btn4);
+	btn1 = new ButtonImageLoader(
+		wxT("img//btn_tentang.png"), this, 1004, 3 * h);
+	this->btn->Append(btn1);
 
 	//button img keluar
-	ButtonImageLoader *btn5 = new ButtonImageLoader(
-		wxT("img//btn_keluar.png"), this, 1005, 3 * h);
-	this->btn->Append(btn5);
+	btn1 = new ButtonImageLoader(
+		wxT("img//btn_keluar.png"), this, 1005, 4 * h);
+	this->btn->Append(btn1);
 }
 void MainPanel::OnPaint(wxPaintEvent &event)
 {
@@ -80,10 +80,8 @@ void MainPanel::OnPaint(wxPaintEvent &event)
 	while (tmp)
 	{
 		ImageLoader *iml = tmp->GetData();
-		if (iml->loc == wxT("img//bg.jpg"))
-		{
+		if (iml->loc == wxT("img//bg1.jpg"))
 			pdc.DrawBitmap(*iml->bitImage, wxPoint(0, 0), true);
-		}
 		if (iml->loc == wxT("img//logo.png"))
 		{
 			int posX = SwitchFrame::width / 2 - iml->bitImage->GetWidth() / 2;
@@ -122,7 +120,7 @@ void MainPanel::OnAboutClick(wxCommandEvent & event)
 		"About Game\n\n"
 		"Version 1.0\n"
 		"Developed by Ananta Dwi Prasetya dan Rangga Kusuma Dinata\n"
-		"Inspirated by Lapse\nMusic by Built by Titan ft Srvcina - The Darkness"
+		"Inspired by Lapse\nMusic by Built by Titan ft Srvcina - The Darkness"
 	),
 		"About righTChoice",
 		wxOK,
