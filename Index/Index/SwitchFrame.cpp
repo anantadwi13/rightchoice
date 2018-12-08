@@ -14,6 +14,7 @@ SwitchFrame::SwitchFrame(const wxString & title)
 	: wxFrame(NULL, wxID_ANY, title, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE ^ wxMAXIMIZE_BOX ^ wxRESIZE_BORDER)
 {
 	this->InitComponents();
+	this->SetDoubleBuffered(true);
 }
 void SwitchFrame::fitWindowSize()
 {

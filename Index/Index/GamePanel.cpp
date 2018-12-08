@@ -5,6 +5,7 @@ BEGIN_EVENT_TABLE(GamePanel, wxPanel)
 	EVT_BUTTON(1001, GamePanel::OnBackButtonClick)
 	EVT_PAINT(GamePanel::OnPaint)
 END_EVENT_TABLE()
+
 GamePanel::GamePanel(SwitchFrame * parent) :
 	wxPanel(parent, wxID_ANY), parentFrame(parent)
 {
@@ -23,6 +24,13 @@ GamePanel::GamePanel(SwitchFrame * parent) :
 
 	//load image dan button image
 	this->renderBitmap();
+
+	statIntelektual = new GaugeBar(SwitchFrame::width / 5 + 60, SwitchFrame::height / 10 - 20, 150, 300);
+	statKesehatan = new GaugeBar(SwitchFrame::width / 2 + 114, SwitchFrame::height / 10 - 20, 150, 300);
+	statHubungan = new GaugeBar(SwitchFrame::width / 5 + 60, SwitchFrame::height / 10 + 60, 150, 300);
+	statFinansial = new GaugeBar(SwitchFrame::width / 2 + 114, SwitchFrame::height / 10 + 60, 150, 300);
+
+	statIntelektual->setWidth(50);
 }
 GamePanel::~GamePanel()
 {
@@ -30,6 +38,10 @@ GamePanel::~GamePanel()
 	this->img->Clear();
 	delete this->btn;
 	delete this->img;
+	delete this->statIntelektual;
+	delete this->statKesehatan;
+	delete this->statHubungan;
+	delete this->statFinansial;
 }
 void GamePanel::renderBitmap()
 {
@@ -68,7 +80,7 @@ void GamePanel::OnBackButtonClick(wxCommandEvent & event)
 }
 void GamePanel::OnPaint(wxPaintEvent &event)
 {
-	wxPaintDC pdc(this);
+	wxBufferedPaintDC pdc(this);
 	ImageLoaderList::Node* tmp = this->img->GetFirst();
 
 	//variabel gambar
@@ -113,63 +125,14 @@ void GamePanel::OnPaint(wxPaintEvent &event)
 		}
 		tmp = tmp->GetNext();
 	}
+
+	statIntelektual->Draw(pdc);
+	statKesehatan->Draw(pdc);
+	statHubungan->Draw(pdc);
+	statFinansial->Draw(pdc);
+
 	//variable drawing bar dan gauge
 	int xrect, yrect, width;
-
-	//otak rect gauge (100% fixed)
-	xrect = SwitchFrame::width / 5 + 60;
-	yrect = SwitchFrame::height / 10 - 20;
-	width = 300;
-	//wxMessageOutputDebug().Printf("w %d", SwitchFrame::width / 2 - xrect - width);
-	pdc.SetPen(*wxGREY_PEN);
-	pdc.SetBrush(*wxGREY_BRUSH);
-	pdc.DrawRectangle(wxPoint(xrect, yrect), wxSize(width, 40));
-	//otak rect bar
-	width = 150;		//separuh dari gauge
-	pdc.SetPen(*wxGREEN_PEN);
-	pdc.SetBrush(*wxGREEN_BRUSH);
-	pdc.DrawRectangle(wxPoint(xrect, yrect), wxSize(width, 40));
-
-	//otot rect gauge (100% fixed)
-	xrect = SwitchFrame::width / 2 + 114;
-	yrect = SwitchFrame::height / 10 - 20;
-	width = 300;
-	pdc.SetPen(*wxGREY_PEN);
-	pdc.SetBrush(*wxGREY_BRUSH);
-	pdc.DrawRectangle(wxPoint(xrect, yrect), wxSize(width, 40));
-	//otot rect bar
-	width = 150;		//separuh dari gauge
-	pdc.SetPen(*wxGREEN_PEN);
-	pdc.SetBrush(*wxGREEN_BRUSH);
-	pdc.DrawRectangle(wxPoint(xrect, yrect), wxSize(width, 40));
-
-	//orang rect gauge (100% fixed)
-	 xrect = SwitchFrame::width / 5 + 60;
-	 yrect = SwitchFrame::height / 10 + 60;
-	width = 300;
-	//wxMessageOutputDebug().Printf("w %d", SwitchFrame::width / 2 - xrect - width);
-	pdc.SetPen(*wxGREY_PEN);
-	pdc.SetBrush(*wxGREY_BRUSH);
-	pdc.DrawRectangle(wxPoint(xrect, yrect), wxSize(width, 40));
-	//orang rect bar
-	width = 150;		//separuh dari gauge
-	//wxMessageOutputDebug().Printf("w %d", SwitchFrame::width / 2 - xrect - width);
-	pdc.SetPen(*wxGREEN_PEN);
-	pdc.SetBrush(*wxGREEN_BRUSH);
-	pdc.DrawRectangle(wxPoint(xrect, yrect), wxSize(width, 40));
-
-	//uang rect gauge (100% fixed)
-	xrect = SwitchFrame::width / 2 + 114;
-	yrect = SwitchFrame::height / 10 + 60;
-	width = 300;
-	pdc.SetPen(*wxGREY_PEN);
-	pdc.SetBrush(*wxGREY_BRUSH);
-	pdc.DrawRectangle(wxPoint(xrect, yrect), wxSize(width, 40));
-	//uang rect bar
-	width = 150;		//separuh dari gauge
-	pdc.SetPen(*wxGREEN_PEN);
-	pdc.SetBrush(*wxGREEN_BRUSH);
-	pdc.DrawRectangle(wxPoint(xrect, yrect), wxSize(width, 40));
 
 	//problem rect
 	xrect = SwitchFrame::width / 2 - 150;
