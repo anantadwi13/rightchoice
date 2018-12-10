@@ -15,6 +15,7 @@ bool MyApp::OnInit() {
 	SwitchFrame *frame = new SwitchFrame("righTChoice");
 	wxIcon i(wxT("img//favicon.png"), wxBITMAP_TYPE_PNG);
 	frame->SetIcon(i);
+	PlaySound(TEXT("bg.wav"), NULL, SND_FILENAME | SND_ASYNC);
 	frame->Show(true);
 	//wxSound music(wxT("bg.wav"),true);
 	//if (music.IsOk())

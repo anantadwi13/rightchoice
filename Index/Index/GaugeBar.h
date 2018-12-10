@@ -1,11 +1,9 @@
 #pragma once
-#include "wx/dcbuffer.h"
+#include "GameObject.h"
 
-class GaugeBar
+class GaugeBar : public GameObject
 {
 private:
-	int x;
-	int y;
 	int width;
 	int maxWidth;
 public:
@@ -13,7 +11,7 @@ public:
 	void setWidth(int width);
 	int getWidth();
 	int getMaxWidth();
-	void Draw(wxBufferedDC &dc);
+	virtual void Draw(wxBufferedDC &dc);
 	~GaugeBar();
 };
 
