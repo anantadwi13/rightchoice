@@ -19,6 +19,6 @@ public:
 	KartuArray *getCards();
 	KartuArray getAllCards();
 	Kartu getCardById(int id);
-	static int insertCallback(void *NotUsed, int argc, char **argv, char **azColName);
+	static int getCallback(void *NotUsed, int argc, char **argv, char **azColName);
 };
 

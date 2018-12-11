@@ -13,7 +13,7 @@ KartuDB::KartuDB()
 		cout << "SQLITE ERROR" << endl;
 }
 
-int KartuDB::insertCallback(void *NotUsed, int argc, char **argv, char **azColName) {
+int KartuDB::getCallback(void *NotUsed, int argc, char **argv, char **azColName) {
 	KartuDB* kartuDB = (KartuDB*) NotUsed;
 
 	Kartu *temp = new Kartu();
@@ -44,7 +44,7 @@ KartuArray KartuDB::getAllCards() {
 
 	const char *sql = query.c_str();
 
-	status = sqlite3_exec(db, sql, insertCallback, (void*) this, &errorMsg);
+	status = sqlite3_exec(db, sql, getCallback, (void*) this, &errorMsg);
 	return cards;
 }
 
@@ -56,7 +56,7 @@ Kartu KartuDB::getCardById(int id) {
 	const char *sql = query.c_str();
 	
 
-	status = sqlite3_exec(db, sql, insertCallback, (void*)this, &errorMsg);
+	status = sqlite3_exec(db, sql, getCallback, (void*)this, &errorMsg);
 
 	if (cards.Count()<=0)
 		cards.Add(new Kartu());

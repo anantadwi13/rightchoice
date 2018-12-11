@@ -121,18 +121,45 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ButtonImageLoader.cpp" />
+    <ClCompile Include="Card.cpp" />
+    <ClCompile Include="Figur.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GamePanel.cpp" />
+    <ClCompile Include="GaugeBar.cpp" />
+    <ClCompile Include="ImageLoader.cpp" />
+    <ClCompile Include="InstructionPanel.cpp" />
     <ClCompile Include="Kartu.cpp" />
     <ClCompile Include="KartuDB.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Label.cpp" />
+    <ClCompile Include="Main3.cpp" />
     <ClCompile Include="Main2.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="MainPanel.cpp" />
     <ClCompile Include="NilaiPilar.cpp" />
+    <ClCompile Include="Score.cpp" />
+    <ClCompile Include="ScoreDB.cpp" />
     <ClCompile Include="sqlite3.c" />
+    <ClCompile Include="SwitchFrame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ButtonImageLoader.h" />
+    <ClInclude Include="Card.h" />
+    <ClInclude Include="Figur.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GamePanel.h" />
+    <ClInclude Include="GaugeBar.h" />
+    <ClInclude Include="ImageLoader.h" />
+    <ClInclude Include="InstructionPanel.h" />
     <ClInclude Include="Kartu.h" />
     <ClInclude Include="KartuDB.h" />
+    <ClInclude Include="Label.h" />
+    <ClInclude Include="MainPanel.h" />
     <ClInclude Include="NilaiPilar.h" />
+    <ClInclude Include="Score.h" />
+    <ClInclude Include="ScoreDB.h" />
     <ClInclude Include="sqlite3.h" />
+    <ClInclude Include="SwitchFrame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

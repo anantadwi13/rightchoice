@@ -13,39 +13,150 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\panel">
+      <UniqueIdentifier>{85be6272-38c0-4035-a5eb-ebfe69526b4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\panel">
+      <UniqueIdentifier>{640bc8ca-f0fc-43f1-9c18-ada57f705c05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\helper">
+      <UniqueIdentifier>{7c4f4efd-bf14-41b7-a193-afe044b674d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\helper">
+      <UniqueIdentifier>{1ab875c6-8ab3-47d8-9cc2-dd94256c256e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\frame">
+      <UniqueIdentifier>{9ae6c51c-85e1-41e4-ba3c-00ade5c3f983}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\frame">
+      <UniqueIdentifier>{5242ab09-4c76-4f5e-b876-b114ed2eb445}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\model">
+      <UniqueIdentifier>{8a69c37f-854f-49f6-9957-6adfbbbc2cc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\model">
+      <UniqueIdentifier>{b01e120d-8388-49e5-b772-1ab3bdf20afa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\gameobject">
+      <UniqueIdentifier>{af84d77d-a7d5-422d-83b2-8bb5a4e5d978}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\gameobject">
+      <UniqueIdentifier>{e0396b5d-7635-4043-a095-c89f6935856b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Kartu.cpp">
+    <ClCompile Include="ButtonImageLoader.cpp">
+      <Filter>Source Files\helper</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageLoader.cpp">
+      <Filter>Source Files\helper</Filter>
+    </ClCompile>
+    <ClCompile Include="Main3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Main2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Main.cpp">
+    <ClCompile Include="MainMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sqlite3.c">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="InstructionPanel.cpp">
+      <Filter>Source Files\panel</Filter>
+    </ClCompile>
+    <ClCompile Include="MainPanel.cpp">
+      <Filter>Source Files\panel</Filter>
+    </ClCompile>
+    <ClCompile Include="GamePanel.cpp">
+      <Filter>Source Files\panel</Filter>
+    </ClCompile>
+    <ClCompile Include="SwitchFrame.cpp">
+      <Filter>Source Files\frame</Filter>
+    </ClCompile>
+    <ClCompile Include="Kartu.cpp">
+      <Filter>Source Files\model</Filter>
     </ClCompile>
     <ClCompile Include="NilaiPilar.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="sqlite3.c">
+      <Filter>Source Files\helper</Filter>
     </ClCompile>
     <ClCompile Include="KartuDB.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\helper</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreDB.cpp">
+      <Filter>Source Files\helper</Filter>
+    </ClCompile>
+    <ClCompile Include="Score.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Card.cpp">
+      <Filter>Source Files\gameobject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\gameobject</Filter>
+    </ClCompile>
+    <ClCompile Include="Label.cpp">
+      <Filter>Source Files\gameobject</Filter>
+    </ClCompile>
+    <ClCompile Include="GaugeBar.cpp">
+      <Filter>Source Files\gameobject</Filter>
+    </ClCompile>
+    <ClCompile Include="Figur.cpp">
+      <Filter>Source Files\model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Kartu.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ButtonImageLoader.h">
+      <Filter>Header Files\helper</Filter>
     </ClInclude>
-    <ClInclude Include="NilaiPilar.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ImageLoader.h">
+      <Filter>Header Files\helper</Filter>
+    </ClInclude>
+    <ClInclude Include="MainPanel.h">
+      <Filter>Header Files\panel</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionPanel.h">
+      <Filter>Header Files\panel</Filter>
+    </ClInclude>
+    <ClInclude Include="GamePanel.h">
+      <Filter>Header Files\panel</Filter>
+    </ClInclude>
+    <ClInclude Include="SwitchFrame.h">
+      <Filter>Header Files\frame</Filter>
     </ClInclude>
     <ClInclude Include="sqlite3.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Kartu.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="NilaiPilar.h">
+      <Filter>Header Files\model</Filter>
     </ClInclude>
     <ClInclude Include="KartuDB.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\helper</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreDB.h">
+      <Filter>Header Files\helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="Label.h">
+      <Filter>Header Files\gameobject</Filter>
+    </ClInclude>
+    <ClInclude Include="Card.h">
+      <Filter>Header Files\gameobject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files\gameobject</Filter>
+    </ClInclude>
+    <ClInclude Include="GaugeBar.h">
+      <Filter>Header Files\gameobject</Filter>
+    </ClInclude>
+    <ClInclude Include="Figur.h">
+      <Filter>Header Files\model</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

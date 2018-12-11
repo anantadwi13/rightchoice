@@ -1,3 +1,4 @@
+/*
 #include "wx/wxprec.h"
 #ifndef WX_PRECOMP
 #include "wx/wx.h"
@@ -74,3 +75,4 @@ void MyFrame::OnAbout(wxCommandEvent& WXUNUSED(event))
 		this);
 
 }
+*/
