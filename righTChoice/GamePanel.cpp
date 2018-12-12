@@ -4,6 +4,7 @@
 #include<math.h>
 #include<ctime>
 #include"ScoreDB.h"
+
 using namespace std;
 
 WX_DEFINE_OBJARRAY(IntegerArray);
@@ -40,7 +41,6 @@ GamePanel::GamePanel(SwitchFrame * parent) :
 	wxPen p;
 	wxBrush b;
 
-
 	this->kartuDB = new KartuDB();
 	this->scoreDB = new ScoreDB();
 	this->cards = kartuDB->getAllCards();
@@ -60,7 +60,7 @@ GamePanel::GamePanel(SwitchFrame * parent) :
 	statHubungan = new GaugeBar(SwitchFrame::width / 5 + 60, SwitchFrame::height / 10 + 60, 150, 300);
 	statFinansial = new GaugeBar(SwitchFrame::width / 2 + 114, SwitchFrame::height / 10 + 60, 150, 300);
 
-	this->figure.Add(new Figur("Nama Dosen","img//fig_dosen.png"));
+	this->figure.Add(new Figur("Dosen","img//fig_dosen.png"));
 	this->figure.Add(new Figur("Ibu","img//fig_ibu.png"));
 	this->figure.Add(new Figur("Ibu Kantin","img//fig_ibu_kantin.png"));
 	this->figure.Add(new Figur("Kating Aktivis","img//fig_kating_aktivis.png"));
@@ -118,7 +118,6 @@ GamePanel::GamePanel(SwitchFrame * parent) :
 	skor->setPen(p);
 	skor->setBrush(b);
 }
-
 void GamePanel::resetGame() {
 	this->statDay = 1;
 	this->statIntelektual->setWidth(150);
@@ -135,7 +134,6 @@ void GamePanel::resetGame() {
 	this->skor->setString(skorstring);
 	this->card->setLoc(this->figure[cardNow.getType()].getFile());
 }
-
 Kartu GamePanel::getKartuRandom() {
 	int random, index;
 
@@ -158,7 +156,6 @@ Kartu GamePanel::getKartuRandom() {
 	}
 	return cards[index];
 }
-
 GamePanel::~GamePanel()
 {
 	this->btn->Clear();
@@ -312,7 +309,6 @@ bool GamePanel::checkStat() {
 
 	return true;
 }
-
 void GamePanel::OnAnswer(wxMouseEvent &event)
 {
 	wxMessageOutputDebug().Printf("x %d y %d", event.GetX(), event.GetY());

@@ -1,12 +1,9 @@
 #include "NilaiPilar.h"
 
-
-
 NilaiPilar::NilaiPilar()
 {
 
 }
-
 void NilaiPilar::setIntelektual(int intelektual) {
 	this->intelektual = intelektual;
 }

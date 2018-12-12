@@ -2,6 +2,7 @@
 #include <wx/arrimpl.cpp>
 #include<iostream>
 #include<string>
+
 WX_DEFINE_OBJARRAY(KartuArray);
 
 using namespace std;
@@ -12,7 +13,6 @@ KartuDB::KartuDB()
 	if (status != SQLITE_OK)
 		cout << "SQLITE ERROR" << endl;
 }
-
 int KartuDB::getCallback(void *NotUsed, int argc, char **argv, char **azColName) {
 	KartuDB* kartuDB = (KartuDB*) NotUsed;
 
@@ -32,11 +32,9 @@ int KartuDB::getCallback(void *NotUsed, int argc, char **argv, char **azColName)
 
 	return 0;
 }
-
 KartuArray *KartuDB::getCards() {
 	return &(this->cards);
 }
-
 KartuArray KartuDB::getAllCards() {
 	cards.Clear();
 
@@ -47,14 +45,12 @@ KartuArray KartuDB::getAllCards() {
 	status = sqlite3_exec(db, sql, getCallback, (void*) this, &errorMsg);
 	return cards;
 }
-
 Kartu KartuDB::getCardById(int id) {
 	cards.Clear();
 
 	string query = "SELECT * from Kartu where id = " + to_string(id);
 
-	const char *sql = query.c_str();
-	
+	const char *sql = query.c_str();	
 
 	status = sqlite3_exec(db, sql, getCallback, (void*)this, &errorMsg);
 
@@ -62,7 +58,6 @@ Kartu KartuDB::getCardById(int id) {
 		cards.Add(new Kartu());
 	return cards[0];
 }
-
 KartuDB::~KartuDB()
 {
 	cards.Clear();

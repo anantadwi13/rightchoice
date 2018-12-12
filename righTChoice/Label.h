@@ -17,7 +17,6 @@ public:
 	void setString(wxString string);
 	void setBrush(wxBrush brush);
 	void setPen(wxPen pen);
-	//int getWidth();
 	virtual void Draw(wxBufferedDC &dc);
 	~Label();
 };

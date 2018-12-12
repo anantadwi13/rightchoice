@@ -4,18 +4,18 @@
 #include "MainPanel.h"
 #include "wx/dcbuffer.h"
 
-class InstructionPanel : public wxPanel
+class OOPPanel : public wxPanel
 {
 public:
-	InstructionPanel(SwitchFrame* parent);
-	~InstructionPanel();
+	OOPPanel(SwitchFrame* parent);
+	~OOPPanel();
 	void OnBackButtonClick(wxCommandEvent& event);
 	//mirip imagewindow
 	void OnPaint(wxPaintEvent &event);
 private:
-	//mirip imagewindow
 	ImageLoaderList *img = nullptr, *btn = nullptr;
 	SwitchFrame *parentFrame;
 	DECLARE_EVENT_TABLE()
 	void renderBitmap();
 };
+

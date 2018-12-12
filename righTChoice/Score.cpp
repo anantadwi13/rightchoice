@@ -1,16 +1,11 @@
 #include "Score.h"
 
-
-
 Score::Score()
 {
 }
-
-
 Score::~Score()
 {
 }
-
 void Score::setId(int id) {
 	this->id = id;
 }

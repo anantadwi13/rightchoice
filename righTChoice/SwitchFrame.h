@@ -1,20 +1,19 @@
 #pragma once
 #include "wx/wx.h"
-//#include <wx/mediactrl.h>
+
 class MainPanel;
 class GamePanel;
 class InstructionPanel;
+class OOPPanel;
 class SwitchFrame : public wxFrame {
 private:
 	wxBoxSizer* boxSizer;
 	MainPanel* mainPanel;
 	GamePanel* gamePanel;
 	InstructionPanel* instructionPanel;
+	OOPPanel* oopPanel;
 	void fitWindowSize();
-	//wxMediaCtrl *music = nullptr;
-	//DECLARE_EVENT_TABLE()
 public:
-	//void BacksoundPlay(wxMediaEvent& event);
 	//mirip imageframe
 	static int width;
 	static int height;
@@ -23,4 +22,5 @@ public:
 	void ShowMainPanel();
 	void ShowGamePanel();
 	void ShowInstructionPanel();
+	void ShowOOPPanel();
 };

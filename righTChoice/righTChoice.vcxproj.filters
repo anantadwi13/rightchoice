@@ -105,6 +105,9 @@
     <ClCompile Include="Figur.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
+    <ClCompile Include="OOPPanel.cpp">
+      <Filter>Source Files\panel</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ButtonImageLoader.h">
@@ -157,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="Figur.h">
       <Filter>Header Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="OOPPanel.h">
+      <Filter>Header Files\panel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

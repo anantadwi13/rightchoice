@@ -5,8 +5,10 @@
 #include "ImageLoader.h"
 #include "ButtonImageLoader.h"
 #include "ScoreDB.h"
+#include "wx/dcbuffer.h"
 
 WX_DECLARE_LIST(ImageLoader, ImageLoaderList);
+
 class MainPanel : public wxPanel
 {
 public:
@@ -17,6 +19,7 @@ public:
 	void OnHighscoresClick(wxCommandEvent& event);
 	void OnAboutClick(wxCommandEvent& event);
 	void OnExitClick(wxCommandEvent& event);
+	void OnOOPClick(wxCommandEvent& event);
 	//mirip imagewindow
 	void OnPaint(wxPaintEvent &event);
 private:

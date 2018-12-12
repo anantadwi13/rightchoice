@@ -3,11 +3,8 @@
 Kartu::Kartu()
 {
 }
-
 Kartu::~Kartu() {
 }
-
-
 void Kartu::setId(int id) {
 	this->id = id;
 }

@@ -1,6 +1,5 @@
 //init window game
 #include "wx/wxprec.h"
-//#include <wx/sound.h>
 #include "SwitchFrame.h"
 #ifndef WX_PRECOMP
 #include "wx/wx.h"
@@ -15,13 +14,7 @@ bool MyApp::OnInit() {
 	SwitchFrame *frame = new SwitchFrame("righTChoice");
 	wxIcon i(wxT("img//favicon.png"), wxBITMAP_TYPE_PNG);
 	frame->SetIcon(i);
-	PlaySound(TEXT("bg.wav"), NULL, SND_FILENAME | SND_ASYNC);
+	PlaySound(TEXT("bg.wav"), NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	frame->Show(true);
-	//wxSound music(wxT("bg.wav"),true);
-	//if (music.IsOk())
-	//{
-	//	music.Play(wxSOUND_ASYNC | wxSOUND_LOOP);
-	//	wxMessageOutputDebug().Printf("main");
-	//}
 	return true;
 }

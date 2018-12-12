@@ -1,15 +1,19 @@
 //tampilan muka menu utama
 #include "MainPanel.h"
 #define h 65
+
 WX_DEFINE_LIST(ImageLoaderList);
+
 BEGIN_EVENT_TABLE(MainPanel, wxPanel)
 	EVT_BUTTON(1001, MainPanel::OnGameClick)
 	EVT_BUTTON(1002, MainPanel::OnInstructionClick)
 	EVT_BUTTON(1003, MainPanel::OnHighscoresClick)
 	EVT_BUTTON(1004, MainPanel::OnAboutClick)
 	EVT_BUTTON(1005, MainPanel::OnExitClick)
+	EVT_BUTTON(1006, MainPanel::OnOOPClick)
 	EVT_PAINT(MainPanel::OnPaint)
 END_EVENT_TABLE()
+
 MainPanel::MainPanel(SwitchFrame * parent) :
 	wxPanel(parent, wxID_ANY), parentFrame(parent)
 {
@@ -70,10 +74,17 @@ void MainPanel::renderBitmap()
 	btn1 = new ButtonImageLoader(
 		wxT("img//btn_keluar.png"), this, 1005, 4 * h);
 	this->btn->Append(btn1);
+
+	//button oop explanation
+	btn1 = new ButtonImageLoader(
+		wxT("img//btn_oop.png"), this, 1006, 5 * h,
+		SwitchFrame::width * 29 / 30 - 15,
+		SwitchFrame::height / 2 - 50);
+	this->btn->Append(btn1);
 }
 void MainPanel::OnPaint(wxPaintEvent &event)
 {
-	wxPaintDC pdc(this);
+	wxBufferedPaintDC pdc(this);
 	ImageLoaderList::Node* tmp = this->img->GetFirst();
 	
 	//gambar image selain button
@@ -126,7 +137,7 @@ void MainPanel::OnAboutClick(wxCommandEvent & event)
 	(
 		"About Game\n\n"
 		"Version 1.0\n"
-		"Developed by Ananta Dwi Prasetya dan Rangga Kusuma Dinata\n"
+		"Developed by Ananta Dwi Prasetya P Y & Rangga Kusuma D\n"
 		"Inspired by Lapse\nMusic by Built by Titan ft Srvcina - The Darkness"
 	),
 		"About righTChoice",
@@ -136,4 +147,8 @@ void MainPanel::OnAboutClick(wxCommandEvent & event)
 void MainPanel::OnExitClick(wxCommandEvent & event)
 {
 	parentFrame->Close(true);
+}
+void MainPanel::OnOOPClick(wxCommandEvent& event)
+{
+	parentFrame->ShowOOPPanel();
 }

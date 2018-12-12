@@ -1,18 +1,13 @@
 #include "Figur.h"
 
-
-
 Figur::Figur(string nama, string file)
 {
 	setNama(nama);
 	setFile(file);
 }
-
-
 Figur::~Figur()
 {
 }
-
 void Figur::setNama(string nama) {
 	this->nama = nama;
 }
