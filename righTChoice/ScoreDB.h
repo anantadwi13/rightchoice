@@ -1,7 +1,7 @@
 #pragma once
 #include <wx/dynarray.h>
 #include "Score.h"
-#include "sqlite/sqlite3.h"
+#include "sqlite3.h"
 
 WX_DECLARE_OBJARRAY(Score, ScoreArray);
 

@@ -1,7 +1,7 @@
 #pragma once
 #include <wx/dynarray.h>
 #include "Kartu.h"
-#include "sqlite/sqlite3.h"
+#include "sqlite3.h"
 
 WX_DECLARE_OBJARRAY(Kartu, KartuArray);
 
