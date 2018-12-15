@@ -267,35 +267,35 @@ void GamePanel::OnPaint(wxPaintEvent &event)
 bool GamePanel::checkStat() {
 	wxString gameovertext = "";
 	if (this->statIntelektual->getWidth() <= 0) {
-		gameovertext = "Bodoh";
+		gameovertext = "Sepertinya keaktifanmu dan ketertinggalanmu selama ini tak saling berimbang menurut dosen. Tapi,\nkali ini yang terakhir kamu melakukannya di perkuliahan ini.";
 		this->card->setLoc("img//death_low_intelektual.png");
 	}
 	else if (this->statIntelektual->getWidth() >= this->statIntelektual->getMaxWidth()) {
-		gameovertext = "Gila";
+		gameovertext = "Pemikiranmu memang genius, tapi kelihatannya kamu butuh konseling serius. Ada titipan orangtuamu\nuntuk merujukmu ke rehabilitasi psikologis saat ini juga.Perkuliahanmu sementara ditunda.";
 		this->card->setLoc("img//death_high_intelektual.png");
 	}
 	else if (this->statKesehatan->getWidth() <= 0) {
-		gameovertext = "Sakit";
+		gameovertext = "Tiba-tiba kamu terlihat memburuk dan sangat tidak sehat sekarang ini. Kamu terjatuh di tangga kampus\ndan pingsan.Kamu didiagnosa dengan keputusan yang memberatkanmu meneruskan perkuliahanmu saat ini.";
 		this->card->setLoc("img//death_low_kesehatan.png");
 	}
 	else if (this->statKesehatan->getWidth() >= this->statKesehatan->getMaxWidth()) {
-		gameovertext = "Terlalu sehat";
+		gameovertext = "Hebat sekali! Kamu lolos menjadi public figure karena penampilanmu yang menarik. Temanmu tahu tubuh\nfit - mu pasti memberikan bonusnya suatu hari.Salah satu temanmu berhasil mendaftarkanmu.Terkadang\nlebih baik meminta maaf daripada meminta izin bukan ?";
 		this->card->setLoc("img//death_high_kesehatan.png");
 	}
 	else if (this->statHubungan->getWidth() <= 0) {
-		gameovertext = "Apatis";
+		gameovertext = "Orang sekitarmu tak yakin kamu orang yang bisa dipercaya saat ini. Maksud mereka, kamu yang membuat\ndirimu sendiri menjadi orang yang asing di sekitar mereka.Dunia perkuliahanmu tak pernah sesulit\nini untuk dijalani kembali.";
 		this->card->setLoc("img//death_low_hubungan.png");
 	}
 	else if (this->statHubungan->getWidth() >= this->statHubungan->getMaxWidth()) {
-		gameovertext = "Terlalu sibuk";
+		gameovertext = "Setelah menjalani proyek aplikasi, dipercaya menjadi penanggung jawab kepanitiaan, mengikuti\nkegiatan rutin komunitas, berturut - turut tanpa henti, kamu tak mampu memegang kontrol atas dunia\nperkuliahanmu lagi.";
 		this->card->setLoc("img//death_high_hubungan.png");
 	}
 	else if (this->statFinansial->getWidth() <= 0) {
-		gameovertext = "Miskin";
+		gameovertext = "Atas berbagai pertimbangan, dosen menyayangkan kamu mundur dari perkuliahan ini karena masalah\nfinansial hidup.Jika seandainya saja kamu mampu mengusahakan beasiswa.";
 		this->card->setLoc("img//death_low_financial.png");
 	}
 	else if (this->statFinansial->getWidth() >= this->statFinansial->getMaxWidth()) {
-		gameovertext = "Terlalu kaya";
+		gameovertext = "Ini keputusan yang gila, tapi kamu dan temanmu mampu membuat startup UNICORN dengan modal yang kau\npunya saat ini. Namun, kamu harus membayarnya dengan meninggalkan perkuliahanmu sekarang juga untuk\nlebih fokus.";
 		this->card->setLoc("img//death_high_financial.png");
 	}
 	else {
