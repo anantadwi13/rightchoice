@@ -60,16 +60,17 @@ GamePanel::GamePanel(SwitchFrame * parent) :
 	statHubungan = new GaugeBar(SwitchFrame::width / 5 + 60, SwitchFrame::height / 10 + 60, 150, 300);
 	statFinansial = new GaugeBar(SwitchFrame::width / 2 + 114, SwitchFrame::height / 10 + 60, 150, 300);
 
-	this->figure.Add(new Figur("Dosen","img//fig_dosen.png"));
-	this->figure.Add(new Figur("Ibu","img//fig_ibu.png"));
-	this->figure.Add(new Figur("Ibu Kantin","img//fig_ibu_kantin.png"));
-	this->figure.Add(new Figur("Kating Aktivis","img//fig_kating_aktivis.png"));
-	this->figure.Add(new Figur("Kating Rajin","img//fig_kating_rajin.png"));
-	this->figure.Add(new Figur("Teman Angkatan","img//fig_teman_angkatan.png"));
-	this->figure.Add(new Figur("Teman Proyek","img//fig_teman_proyek.png"));
+	this->figure.Add(new Figur("Dosen","img//fig_dosen.png","img//bg3.jpg"));
+	this->figure.Add(new Figur("Ibu","img//fig_ibu.png", "img//bg2.jpg"));
+	this->figure.Add(new Figur("Ibu Kantin","img//fig_ibu_kantin.png", "img//bg6.jpg"));
+	this->figure.Add(new Figur("Kating Aktivis","img//fig_kating_aktivis.png", "img//bg7.jpg"));
+	this->figure.Add(new Figur("Kating Rajin","img//fig_kating_rajin.png", "img//bg5.jpg"));
+	this->figure.Add(new Figur("Teman Angkatan","img//fig_teman_angkatan.png", "img//bg4.jpg"));
+	this->figure.Add(new Figur("Teman Proyek","img//fig_teman_proyek.png", "img//bg8.jpg"));
 
 	//card
 	card = new Card(SwitchFrame::width / 2 - 150, SwitchFrame::height * 3 / 5 - 150, this->figure[cardNow.getType()].getFile());
+	bg = new Background(0, 0, this->figure[cardNow.getType()].getBackgroundFile());
 
 
 	//problem string
@@ -132,6 +133,7 @@ void GamePanel::resetGame() {
 	this->rightAnswer->setString(cardNow.getRightAnswer());
 	wxString skorstring = this->figure[cardNow.getType()].getNama() + "\n" + to_string(statDay) + " hari  dalam perkuliahan";
 	this->skor->setString(skorstring);
+	this->bg->setLoc(this->figure[cardNow.getType()].getBackgroundFile());
 	this->card->setLoc(this->figure[cardNow.getType()].getFile());
 }
 Kartu GamePanel::getKartuRandom() {
@@ -175,12 +177,8 @@ GamePanel::~GamePanel()
 }
 void GamePanel::renderBitmap()
 {
-	//img background
-	ImageLoader *img1 = new ImageLoader(wxT("img//bg3.jpg"));
-	this->img->Append(img1);
-
 	//img bar otak
-	img1 = new ImageLoader(wxT("img//bar_otak.png"));
+	ImageLoader *img1 = new ImageLoader(wxT("img//bar_otak.png"));
 	this->img->Append(img1);
 
 	//img bar otot
@@ -221,12 +219,12 @@ void GamePanel::OnPaint(wxPaintEvent &event)
 	//variabel gambar
 	int posX, posY;
 
+	bg->Draw(pdc);
+
 	while (tmp)
 	{
 		ImageLoader *iml = tmp->GetData();
-		if (iml->loc == wxT("img//bg3.jpg"))
-			pdc.DrawBitmap(*iml->bitImage, wxPoint(0, 0), true);
-		else if (iml->loc == wxT("img//bar_otak.png"))
+		if (iml->loc == wxT("img//bar_otak.png"))
 		{	//draw bar otak
 			posX = SwitchFrame::width / 5 - iml->bitImage->GetWidth() / 2;
 			posY = SwitchFrame::height / 10 - iml->bitImage->GetHeight() / 2;
@@ -270,27 +268,35 @@ bool GamePanel::checkStat() {
 	wxString gameovertext = "";
 	if (this->statIntelektual->getWidth() <= 0) {
 		gameovertext = "Bodoh";
+		this->card->setLoc("img//death_low_intelektual.png");
 	}
 	else if (this->statIntelektual->getWidth() >= this->statIntelektual->getMaxWidth()) {
 		gameovertext = "Gila";
+		this->card->setLoc("img//death_high_intelektual.png");
 	}
 	else if (this->statKesehatan->getWidth() <= 0) {
 		gameovertext = "Sakit";
+		this->card->setLoc("img//death_low_kesehatan.png");
 	}
 	else if (this->statKesehatan->getWidth() >= this->statKesehatan->getMaxWidth()) {
 		gameovertext = "Terlalu sehat";
+		this->card->setLoc("img//death_high_kesehatan.png");
 	}
 	else if (this->statHubungan->getWidth() <= 0) {
 		gameovertext = "Apatis";
+		this->card->setLoc("img//death_low_hubungan.png");
 	}
 	else if (this->statHubungan->getWidth() >= this->statHubungan->getMaxWidth()) {
 		gameovertext = "Terlalu sibuk";
+		this->card->setLoc("img//death_high_hubungan.png");
 	}
 	else if (this->statFinansial->getWidth() <= 0) {
 		gameovertext = "Miskin";
+		this->card->setLoc("img//death_low_financial.png");
 	}
 	else if (this->statFinansial->getWidth() >= this->statFinansial->getMaxWidth()) {
 		gameovertext = "Terlalu kaya";
+		this->card->setLoc("img//death_high_financial.png");
 	}
 	else {
 		return false;
@@ -299,6 +305,8 @@ bool GamePanel::checkStat() {
 	this->problem->setString(gameovertext);
 	this->leftAnswer->setString("");
 	this->rightAnswer->setString("");
+	this->skor->setString("Permainan Berakhir\n" + to_string(statDay) + " hari  dalam perkuliahan");
+	this->bg->setLoc("img//bg9.jpg");
 
 	Refresh();
 
@@ -332,6 +340,7 @@ void GamePanel::OnAnswer(wxMouseEvent &event)
 			this->rightAnswer->setString(cardNow.getRightAnswer());
 			wxString skorstring = this->figure[cardNow.getType()].getNama() + "\n" + to_string(statDay) + " hari  dalam perkuliahan";
 			this->skor->setString(skorstring);
+			this->bg->setLoc(this->figure[cardNow.getType()].getBackgroundFile());
 			this->card->setLoc(this->figure[cardNow.getType()].getFile());
 			wxMessageOutputDebug().Printf(this->card->loc);
 			Refresh();
@@ -356,6 +365,7 @@ void GamePanel::OnAnswer(wxMouseEvent &event)
 			this->rightAnswer->setString(cardNow.getRightAnswer());
 			wxString skorstring = this->figure[cardNow.getType()].getNama() + "\n" + to_string(statDay) + " hari  dalam perkuliahan";
 			this->skor->setString(skorstring);
+			this->bg->setLoc(this->figure[cardNow.getType()].getBackgroundFile());
 			this->card->setLoc(this->figure[cardNow.getType()].getFile());
 			wxMessageOutputDebug().Printf(this->card->loc);
 			Refresh();

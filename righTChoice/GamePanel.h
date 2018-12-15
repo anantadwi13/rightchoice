@@ -5,6 +5,7 @@
 #include "GaugeBar.h"
 #include "Label.h"
 #include "Card.h"
+#include "Background.h"
 #include "Kartu.h"
 #include "KartuDB.h"
 #include "ScoreDB.h"
@@ -29,6 +30,7 @@ private:
 	ImageLoaderList *img = nullptr, *btn = nullptr;
 
 	Card *card;
+	Background *bg;
 	Label *problem;
 	Label *skor;	//dan jabatan
 	Label *leftAnswer;

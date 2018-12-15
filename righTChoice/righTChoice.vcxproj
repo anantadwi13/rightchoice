@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{5549e11d-6461-48d1-b42a-d6e363976bb1}</ProjectGuid>
     <RootNamespace>righTChoice</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -121,6 +121,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="ButtonImageLoader.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Figur.cpp" />
@@ -144,6 +145,7 @@
     <ClCompile Include="SwitchFrame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Background.h" />
     <ClInclude Include="ButtonImageLoader.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Figur.h" />
