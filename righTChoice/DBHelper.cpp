@@ -5,7 +5,7 @@ using namespace std;
 
 DBHelper::DBHelper()
 {
-	status = sqlite3_open("test.db", &db);
+	status = sqlite3_open("game.db", &db);
 	if (status != SQLITE_OK)
 		cout << "SQLITE ERROR" << endl;
 }

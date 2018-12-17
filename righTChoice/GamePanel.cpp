@@ -324,10 +324,10 @@ void GamePanel::OnAnswer(wxMouseEvent &event)
 		if (event.GetX() >= 15 && event.GetX() <= 445
 			&& event.GetY() >= SwitchFrame::height * 3 / 5 - 150 && event.GetY() <= SwitchFrame::height * 3 / 5 - 70)
 		{	//left answer
-			this->statIntelektual->setWidth(this->statIntelektual->getWidth() - cardNow.getLeftValue()->getIntelektual());
-			this->statKesehatan->setWidth(this->statKesehatan->getWidth() - cardNow.getLeftValue()->getKesehatan());
-			this->statHubungan->setWidth(this->statHubungan->getWidth() - cardNow.getLeftValue()->getHubungan());
-			this->statFinansial->setWidth(this->statFinansial->getWidth() - cardNow.getLeftValue()->getFinansial());
+			this->statIntelektual->setWidth(this->statIntelektual->getWidth() + cardNow.getLeftValue()->getIntelektual());
+			this->statKesehatan->setWidth(this->statKesehatan->getWidth() + cardNow.getLeftValue()->getKesehatan());
+			this->statHubungan->setWidth(this->statHubungan->getWidth() + cardNow.getLeftValue()->getHubungan());
+			this->statFinansial->setWidth(this->statFinansial->getWidth() + cardNow.getLeftValue()->getFinansial());
 			statDay += cardNow.getLeftDay();
 
 			if (checkStat())
@@ -349,10 +349,10 @@ void GamePanel::OnAnswer(wxMouseEvent &event)
 		else if (event.GetX() >= SwitchFrame::width / 2 + 195 && event.GetX() <= SwitchFrame::width / 2 + 615
 			&& event.GetY() >= SwitchFrame::height * 3 / 5 - 150 && event.GetY() <= SwitchFrame::height * 3 / 5 - 70)
 		{	//right answer
-			this->statIntelektual->setWidth(this->statIntelektual->getWidth() - cardNow.getRightValue()->getIntelektual());
-			this->statKesehatan->setWidth(this->statKesehatan->getWidth() - cardNow.getRightValue()->getKesehatan());
-			this->statHubungan->setWidth(this->statHubungan->getWidth() - cardNow.getRightValue()->getHubungan());
-			this->statFinansial->setWidth(this->statFinansial->getWidth() - cardNow.getRightValue()->getFinansial());
+			this->statIntelektual->setWidth(this->statIntelektual->getWidth() + cardNow.getRightValue()->getIntelektual());
+			this->statKesehatan->setWidth(this->statKesehatan->getWidth() + cardNow.getRightValue()->getKesehatan());
+			this->statHubungan->setWidth(this->statHubungan->getWidth() + cardNow.getRightValue()->getHubungan());
+			this->statFinansial->setWidth(this->statFinansial->getWidth() + cardNow.getRightValue()->getFinansial());
 			statDay += cardNow.getRightDay();
 
 			if (checkStat())
