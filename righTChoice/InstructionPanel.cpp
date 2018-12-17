@@ -35,7 +35,7 @@ InstructionPanel::~InstructionPanel()
 void InstructionPanel::renderBitmap()
 {
 	//img background
-	ImageLoader *img1 = new ImageLoader(wxT("img//bg1.jpg"));
+	ImageLoader *img1 = new ImageLoader(wxT("img//instruction.jpg"));
 	this->img->Append(img1);
 
 	//button img back
@@ -51,7 +51,7 @@ void InstructionPanel::OnPaint(wxPaintEvent &event)
 	while (tmp)
 	{
 		ImageLoader *iml = tmp->GetData();
-		if (iml->loc == wxT("img//bg1.jpg"))
+		if (iml->loc == wxT("img//instruction.jpg"))
 		{
 			pdc.DrawBitmap(*iml->bitImage, wxPoint(0, 0), true);
 		}
