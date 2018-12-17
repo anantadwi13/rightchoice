@@ -8,9 +8,6 @@ WX_DEFINE_OBJARRAY(ScoreArray);
 
 ScoreDB::ScoreDB()
 {
-	status = sqlite3_open("test.db", &db);
-	if (status != SQLITE_OK)
-		cout << "SQLITE ERROR" << endl;
 }
 void ScoreDB::insert(string nama, int score, string date) {
 	string sql = "INSERT INTO Score (nama,score,date) "  \
@@ -68,5 +65,4 @@ Score ScoreDB::getScoreById(int id) {
 ScoreDB::~ScoreDB()
 {
 	scores.Clear();
-	sqlite3_close(db);
 }

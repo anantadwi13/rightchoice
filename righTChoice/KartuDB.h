@@ -1,17 +1,14 @@
 #pragma once
 #include <wx/dynarray.h>
 #include "Kartu.h"
-#include "sqlite3.h"
+#include "DBHelper.h"
 
 WX_DECLARE_OBJARRAY(Kartu, KartuArray);
 
-class KartuDB
+class KartuDB : public DBHelper
 {
 private:
 	KartuArray cards;
-	sqlite3 *db;
-	int status = 0;
-	char* errorMsg;
 public:
 	KartuDB();
 	~KartuDB();

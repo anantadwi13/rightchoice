@@ -9,9 +9,6 @@ using namespace std;
 
 KartuDB::KartuDB()
 {
-	status = sqlite3_open("test.db", &db);
-	if (status != SQLITE_OK)
-		cout << "SQLITE ERROR" << endl;
 }
 int KartuDB::getCallback(void *NotUsed, int argc, char **argv, char **azColName) {
 	KartuDB* kartuDB = (KartuDB*) NotUsed;
@@ -61,5 +58,4 @@ Kartu KartuDB::getCardById(int id) {
 KartuDB::~KartuDB()
 {
 	cards.Clear();
-	sqlite3_close(db);
 }

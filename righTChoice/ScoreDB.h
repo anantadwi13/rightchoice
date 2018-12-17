@@ -1,17 +1,14 @@
 #pragma once
 #include <wx/dynarray.h>
 #include "Score.h"
-#include "sqlite3.h"
+#include "DBHelper.h"
 
 WX_DECLARE_OBJARRAY(Score, ScoreArray);
 
-class ScoreDB
+class ScoreDB : public DBHelper
 {
 private:
 	ScoreArray scores;
-	sqlite3 *db;
-	int status = 0;
-	char* errorMsg;
 public:
 	ScoreDB();
 	~ScoreDB();

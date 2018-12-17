@@ -90,9 +90,6 @@
     <ClCompile Include="Score.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="Card.cpp">
-      <Filter>Source Files\gameobject</Filter>
-    </ClCompile>
     <ClCompile Include="GameObject.cpp">
       <Filter>Source Files\gameobject</Filter>
     </ClCompile>
@@ -108,8 +105,11 @@
     <ClCompile Include="OOPPanel.cpp">
       <Filter>Source Files\panel</Filter>
     </ClCompile>
-    <ClCompile Include="Background.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Image.cpp">
+      <Filter>Source Files\gameobject</Filter>
+    </ClCompile>
+    <ClCompile Include="DBHelper.cpp">
+      <Filter>Source Files\helper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -152,9 +152,6 @@
     <ClInclude Include="Label.h">
       <Filter>Header Files\gameobject</Filter>
     </ClInclude>
-    <ClInclude Include="Card.h">
-      <Filter>Header Files\gameobject</Filter>
-    </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Header Files\gameobject</Filter>
     </ClInclude>
@@ -167,8 +164,11 @@
     <ClInclude Include="OOPPanel.h">
       <Filter>Header Files\panel</Filter>
     </ClInclude>
-    <ClInclude Include="Background.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Image.h">
+      <Filter>Header Files\gameobject</Filter>
+    </ClInclude>
+    <ClInclude Include="DBHelper.h">
+      <Filter>Header Files\helper</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

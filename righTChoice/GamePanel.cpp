@@ -69,8 +69,8 @@ GamePanel::GamePanel(SwitchFrame * parent) :
 	this->figure.Add(new Figur("Teman Proyek","img//fig_teman_proyek.png", "img//bg8.jpg"));
 
 	//card
-	card = new Card(SwitchFrame::width / 2 - 150, SwitchFrame::height * 3 / 5 - 150, this->figure[cardNow.getType()].getFile());
-	bg = new Background(0, 0, this->figure[cardNow.getType()].getBackgroundFile());
+	card = new Image(SwitchFrame::width / 2 - 150, SwitchFrame::height * 3 / 5 - 150, this->figure[cardNow.getType()].getFile());
+	bg = new Image(0, 0, this->figure[cardNow.getType()].getBackgroundFile());
 
 
 	//problem string

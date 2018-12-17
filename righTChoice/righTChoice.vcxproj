@@ -121,9 +121,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Background.cpp" />
     <ClCompile Include="ButtonImageLoader.cpp" />
-    <ClCompile Include="Card.cpp" />
+    <ClCompile Include="DBHelper.cpp" />
+    <ClCompile Include="Image.cpp" />
     <ClCompile Include="Figur.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GamePanel.cpp" />
@@ -145,9 +145,9 @@
     <ClCompile Include="SwitchFrame.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Background.h" />
     <ClInclude Include="ButtonImageLoader.h" />
-    <ClInclude Include="Card.h" />
+    <ClInclude Include="DBHelper.h" />
+    <ClInclude Include="Image.h" />
     <ClInclude Include="Figur.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GamePanel.h" />
